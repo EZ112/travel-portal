@@ -1,0 +1,28 @@
+doctype
+html(lang='en')
+    head
+        include ../_head.pug
+        link(rel='stylesheet', href='../assets/css/insertcities.css')
+    body
+        |<%! String heading = "Insert City";%>
+        |<%! String tagline = "Insert new city";%>
+        include ../_general.pug
+        .container
+            - for(let i = 0; i < 4; i++)
+                .section
+                    if i == 0
+                        |<%@ include file="../_menuadmin.jsp"%>
+                    else if i == 1
+                          |<%@ include file="../_header.jsp"%>
+                    else if i == 2
+                            form(action='')
+                                for k in inCityForm
+                                    .formItem
+                                        if k[0] == 'in'
+                                            +input(k[1], k[2], k[3], k[4], k[5])
+                                        else
+                                            +inputNoLabel(k[1], k[2], k[3], k[4])   
+
+                    else
+                        |<%@ include file="../_footerol.jsp"%>
+    script(src='assets/javascript/index.js')

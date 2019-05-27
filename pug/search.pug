@@ -1,0 +1,124 @@
+doctype
+html(lang='en')
+    head
+        include _head.pug
+        link(rel="stylesheet", href="assets/css/search.css")
+    body
+        |<% String heading = "Where are you going ?";%>
+        |<% String tagline = "Ticket anywhre only at TravelProtal";%>
+        |<% String tagline2 = "Booking is faster, easier and cheaper";%>
+        include _general.pug
+        .container
+            - for(let i = 0; i < 3; i++)
+                .section
+                    if i == 0
+                        |<%@ include file="_menutag.jsp"%>
+                    else if i == 1
+                        .ticketlist
+                            table
+                                tbody
+                                    tr
+                                        th  Airline
+                                        th  From
+                                        th  To
+                                        th  Price
+                                        td(rowspan= 2) 
+                                            form(action="")
+                                                button(class='') +
+                                    tr
+                                        td  Garuda Indonesia
+                                        td  
+                                            .fromDest Jakarta
+                                        td  
+                                            .toDest Jakarta
+                                        td 
+                                            b Rp. 
+                                            |   120.000
+                                        td
+                        .ticketlist
+                            table
+                                tbody
+                                    tr
+                                        th  Airline
+                                        th  From
+                                        th  To
+                                        th  Price
+                                        td(rowspan= 2) 
+                                            form(action="")
+                                                button(class='') +
+                                    tr
+                                        td  Garuda Indonesia
+                                        td  
+                                            .fromDest Jakarta
+                                        td  
+                                            .toDest Jakarta
+                                        td 
+                                            b Rp. 
+                                            |   120.000
+                                        td
+                        .ticketlist
+                            table
+                                tbody
+                                    tr
+                                        th  Airline
+                                        th  From
+                                        th  To
+                                        th  Price
+                                        td(rowspan= 2) 
+                                            form(action="")
+                                                button(class='') +
+                                    tr
+                                        td  Garuda Indonesia
+                                        td  
+                                            .fromDest Jakarta
+                                        td  
+                                            .toDest Jakarta
+                                        td 
+                                            b Rp. 
+                                            |   120.000
+                                        td
+                        .ticketlist
+                            table
+                                tbody
+                                    tr
+                                        th  Airline
+                                        th  From
+                                        th  To
+                                        th  Price
+                                        td(rowspan= 2) 
+                                            form(action="")
+                                                button(class='') +
+                                    tr
+                                        td  Garuda Indonesia
+                                        td  
+                                            .fromDest Jakarta
+                                        td  
+                                            .toDest Jakarta
+                                        td 
+                                            b Rp. 
+                                            |   120.000
+                                        td
+                        .ticketlist
+                            table
+                                tbody
+                                    tr
+                                        th  Airline
+                                        th  From
+                                        th  To
+                                        th  Price
+                                        td(rowspan= 2) 
+                                            form(action="")
+                                                button(class='') +
+                                    tr
+                                        td  Garuda Indonesia
+                                        td  
+                                            .fromDest Jakarta
+                                        td  
+                                            .toDest Jakarta
+                                        td 
+                                            b Rp. 
+                                            |   120.000
+                                        td
+                    else
+                        |<%@ include file="_footerol.jsp"%>
+    script(src="assets/javascript/index.js")

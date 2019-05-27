@@ -1,0 +1,40 @@
+mixin dropdown(id, text, option)
+    label(for= id)= text
+    select(id= id name= id)
+        for i in option
+            option(value= i)= i
+
+mixin input(id, intype, text, hint='')
+    label(for= id)= text
+    if hint != ''
+        input(id= id type= intype name= id placeholder=hint)
+    else
+        input(id= id type= intype name= id)
+
+mixin inputRadio(inname, text, option)
+    label= text
+    for i in option
+        label(class='gender')
+            input(type='radio' name= inname value= i)
+            = i
+
+mixin inputNoLabel(id, intype, val='')
+    if val != ''
+        input(id= id type= intype name= id value= val)
+    else
+        input(id=id type= intype name= id)
+
+- var cities = ['Jakarta']
+- var pass = ['1']
+- var cabin = ['Economy']
+- var airline = ['Garuda Indonesia']
+
+- var searchForm = [['ddl', 'ddlFrom', 'From', cities], ['ddl', 'ddlTo', 'To', cities], ['in', 'inDate', 'date', 'Departure Date'], ['ddl', 'ddlPass', 'Passangers', pass], ['ddl', 'ddlCabin', 'Cabin Class', cabin]]
+- var signInForm = [['in', 'inEmail', 'email', 'Email', 'example@gmail.com'], ['in', 'inPass', 'password', 'Password'], ['inCheckBox', 'inCheckBox', 'checkbox'], ['inSubmit', 'inSubmit', 'submit', 'Sign In']]
+- var signUpForm = [['in', 'inName', 'text', 'Name'], ['in', 'inEmail', 'email', 'Email', 'example@gmail.com'], ['in', 'inPass', 'password', 'Password'], ['in', 'inPassConf', 'password', 'Password Confirm'], ['inGender', 'inGender', 'Gender', ['Male', 'Female']], ['inSubmit', 'inSubmit', 'submit', 'Sign Up']]
+- var inUserForm = [['in', 'inName', 'text', 'Name'], ['in', 'inEmail', 'email', 'Email', 'example@gmail.com'], ['inGender', 'inGender', 'Gender', ['Male', 'Female']], ['in', 'inPass', 'password', 'Password'], ['inSubmit', 'inAddUser', 'submit', 'Add User']]
+- var updtUserForm = [['in', 'inName', 'text', 'Name'], ['in', 'inEmail', 'email', 'Email', 'example@gmail.com'],['inGender', 'inGender', 'Gender', ['Male', 'Female']], ['in', 'inPass', 'password', 'Password' ,''], ['inSubmit', 'inAddUser', 'submit', 'Update User']]
+- var inCityForm = [['in', 'inCity', 'text', 'City'], ['in', 'inCountry', 'text', 'Country'], ['inSubmit', 'inAddCity', 'submit', 'Add City']]
+- var updtCityForm = [['in', 'inCity', 'text', 'City'], ['in', 'inCountry', 'text', 'Country'], ['inSubmit', 'inAddCity', 'submit', 'Update City']]
+- var inTicketForm = [['ddl', 'ddlAirline', 'Airline', airline], ['ddl', 'ddlFrom', 'From', cities], ['ddl', 'ddlTo', 'To', cities], ['in', 'inPriceEco', 'text', 'Price Economy (Rp.)'], ['in', 'inPriceBus', 'text', 'Price Business (Rp.)'], ['in', 'inDate', 'date', 'Departure Date'], ['in', 'inSeat', 'text', 'Available Seat'],  ['inSubmit', 'inInsertTicket', 'submit', 'Insert Ticket']]
+- var updtTicketForm = [['ddl', 'ddlAirline', 'Airline', airline], ['ddl', 'ddlFrom', 'From', cities], ['ddl', 'ddlTo', 'To', cities], ['in', 'inPriceEco', 'text', 'Price Economy (Rp.)'], ['in', 'inPriceBus', 'text', 'Price Business (Rp.)'], ['in', 'inDate', 'date', 'Departure Date'], ['in', 'inSeat', 'text', 'Available Seat'],  ['inSubmit', 'inInsertTicket', 'submit', 'Update Ticket']]

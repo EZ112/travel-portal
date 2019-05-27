@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI';
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.heading-1 {
+  font-size: 18px;
+}
+
+@media (min-width: 320px) {
+  .heading-1 {
+    font-size: calc(18px + 22 * (100vw - 320px) / 1046);
+  }
+}
+
+@media (min-width: 1366px) {
+  .heading-1 {
+    font-size: 40px;
+  }
+}
+
+.heading-2 {
+  font-size: 14px;
+}
+
+@media (min-width: 320px) {
+  .heading-2 {
+    font-size: calc(14px + 11 * (100vw - 320px) / 1046);
+  }
+}
+
+@media (min-width: 1366px) {
+  .heading-2 {
+    font-size: 25px;
+  }
+}
+
+label {
+  display: block;
+  margin: 0 0 1% 0;
+}
+
+input, select {
+  border-radius: 5px;
+  font-family: 'Segoe UI';
+  background-color: #eeeeee;
+  border-style: none;
+  font-size: 10px;
+}
+
+@media (min-width: 320px) {
+  input, select {
+    font-size: calc(10px + 6 * (100vw - 320px) / 1046);
+  }
+}
+
+@media (min-width: 1366px) {
+  input, select {
+    font-size: 16px;
+  }
+}
+
+input[type='submit'], button {
+  font-family: 'Segoe UI Light';
+  background-color: #5C5D65;
+  color: white;
+  cursor: pointer;
+}
+
+button {
+  border-radius: 5px;
+  border-style: none;
+}
+
+.invoice {
+  color: white;
+  background-color: #0babfe;
+}
+
+.approvedSts {
+  color: white;
+  background-color: #4bceaf;
+}
+
+.pendingSts {
+  color: #222222;
+  background-color: #ffad1e;
+}
+
+.canceledSts, .rejectedSts {
+  color: white;
+  background-color: #f1637e;
+}
+
+@-webkit-keyframes slideInFromTop {
+  0% {
+    -webkit-transform: translateY(-30%);
+            transform: translateY(-30%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    -webkit-transform: translateY(-30%);
+            transform: translateY(-30%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateX(-15px);
+            transform: translateX(-15px);
+  }
+  30% {
+    -webkit-transform: translateX(15px);
+            transform: translateX(15px);
+  }
+  60% {
+    -webkit-transform: translateX(-15px);
+            transform: translateX(-15px);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: translateX(-15px);
+            transform: translateX(-15px);
+  }
+  30% {
+    -webkit-transform: translateX(15px);
+            transform: translateX(15px);
+  }
+  60% {
+    -webkit-transform: translateX(-15px);
+            transform: translateX(-15px);
+  }
+}
+/*# sourceMappingURL=regist.css.map */

@@ -1,0 +1,133 @@
+@import _color.sass
+@import _general.sass
+
+.container
+    background: url(../img/bg.jpg) no-repeat;
+    background-size: cover;
+    display: grid;
+    grid-template-rows: 5vh 35vh 55vh 5vh;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+
+    .section
+        @include fluid-type(font-size, 320px, 1366px, 10px, 16px)
+
+        &:nth-child(1)
+            color: white;
+            display: grid;
+            font-family: 'Segoe UI Light';
+            grid-template-columns: auto auto;
+
+            .menu 
+                left: 15%;
+                position: relative;
+                
+                a
+                    margin: 0 0 0 2%;
+            
+            .user 
+                right: 22%;
+                position: relative;
+                text-align: right;
+
+        &:nth-child(2)
+            color: white;
+            position: relative;
+            left: 10%;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            font-family: 'Segoe UI Light';
+            justify-content: center;
+
+            .tagline
+                padding: 0 20px;
+                background-color: $gray;
+
+            div
+                margin: 5px 0;
+
+
+        &:nth-child(3)
+            color: $gray;
+
+            form
+                background-color: white;
+                height: 95%;
+                width: 80%;
+                margin: auto;
+                box-shadow: 0px 0px 30px -5px $lightGray;
+                display: grid;
+                align-content: center;
+                justify-content: center;
+                grid-template-rows: 20% 20% 20% 10%;
+                grid-template-columns: 20% 20% 20% 20%; 
+                grid-gap: 0 2%;
+
+                .formItem
+                    &:nth-child(1)
+                        grid-area: 1 / 1 / auto / span 4;
+                    &:nth-child(2)
+                        grid-area: 2 / 1 / auto / span 2;
+                    &:nth-child(3)
+                        grid-area: 2 / 3 / auto / span 2;
+                    &:nth-child(4)
+                        grid-area: 3 / 1 / auto / auto;
+                    &:nth-child(5)
+                        grid-area: 3 / 2 / auto / auto;
+                    &:nth-child(6)
+                        grid-area: 3 / 3 / auto / auto;
+                    &:nth-child(7)
+                        grid-area: 3 / 4 / auto / auto;
+                    &:nth-child(8)
+                        grid-area: 4 / 4 / auto / auto;
+                        display: flex;
+                        justify-content: flex-end;
+                    &:first-child select
+                        padding: 0 2%
+                    &:nth-child(n+2) select
+                        padding: 0 5%;
+
+                input
+                    &:not([type='radio'])
+                        height: 45%;
+                
+                select
+                    width: 100%;
+                    height: 45%;
+
+                input[type='text'], input[type='date']
+                    width: 82%;
+                    padding: 0 10%;
+
+                .gender
+                    display: inline;
+            
+                input[type='submit']
+                    height: 100%;
+                    padding: 0 2%;
+             
+
+        &:nth-child(4)
+                color: $gray;
+                display: flex;
+                justify-content: center;
+
+.container::before
+    content: '';
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50vh;
+    z-index: -1;
+
+.container:after
+    content: '';
+    background-color: $gray;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0.3;

@@ -1,0 +1,50 @@
+doctype
+html(lang='en')
+    head
+        include ../_head.pug
+        link(rel='stylesheet', href='../assets/css/updatetrans.css')
+    body
+        |<% String heading = "Update Transaction";%>
+        |<% String tagline = "Update selected transaction";%>
+        include ../_general.pug
+        .container
+            - for(let i = 0; i < 4; i++)
+                .section
+                    if i == 0
+                        |<%@ include file="../_menuadmin.jsp"%>
+                    else if i == 1
+                          |<%@ include file="../_header.jsp"%>
+                    else if i == 2
+                           .translist
+                                div
+                                    label(class='invoice') INV/20190101/9736249182736
+                                    label(class='status pendingSts') Pending
+                                table
+                                    thead
+                                        tr
+                                            th  Person Title
+                                            th  Person Name
+                                            th  Person Nasionality
+                                            th  Action
+                                    tbody
+                                        tr
+                                            td  Mr
+                                            td  Steven Martin
+                                            td Indonesia
+                                            td
+                                                form(action="" method="POST") 
+                                                    button(class='deleteBtn') Delete
+                                        tr
+                                            td  Mrs
+                                            td  Angela Irena Ardianti
+                                            td Indonesia
+                                            td
+                                                form(action="" method="POST")
+                                                    button(class='deleteBtn') Delete
+                                        tr
+                                            td(colspan= 5 align= 'center') There is no data
+                                form(class='formNav' action="action/doFormNav.jsp" method="POST")
+                                    button(name='backBtn' type='submit' value="mngtrans.jsp") Back
+                    else
+                        |<%@ include file="../_footerol.jsp"%>
+    script(src='assets/javascript/index.js')

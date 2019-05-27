@@ -1,0 +1,96 @@
+doctype
+html(lang='en')
+    head
+        include _head.pug
+        link(rel='stylesheet', href='assets/css/mngtrans.css')
+    body
+        |<% String heading = "Transaction ";%>
+        |<% String tagline = "On progress transaction";%>
+        include _general.pug
+        .container
+            - for(let i = 0; i < 4; i++)
+                .section
+                    if i == 0
+                        |<%@ include file="_menuadmin.jsp"%>
+                    else if i == 1
+                          |<%@ include file="_header.jsp"%>
+                    else if i == 2
+                           .translist
+                                table
+                                    thead
+                                        tr
+                                            th  Invoice Number
+                                            th  Date
+                                            th  Buyer
+                                            th  Status
+                                            th  Action
+                                    tbody
+                                        tr
+                                            td  INV/20190101/9736249182736
+                                            td  2019-01-01
+                                            td Username
+                                            td 
+                                                label(class='status approvedSts') Approved
+                                            td
+                                                form(action='mngtrans/view.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='viewBtn' type='submit') View
+                                                form(action='mngtrans/update.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='editBtn' type='submit') Edit
+                                                form(action='mngtrans/delete.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='deleteBtn' type='submit') Delete
+                                        tr
+                                            td  INV/20190101/9736249182736
+                                            td  2019-01-01
+                                            td Username
+                                            td 
+                                                label(class='status pendingSts') Pending
+                                            td 
+                                                form(action='mngtrans/view.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='viewBtn' type='submit') View
+                                                form(action='mngtrans/update.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='editBtn' type='submit') Edit
+                                                form(action='mngtrans/delete.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='deleteBtn' type='submit') Delete
+                                        tr
+                                            td  INV/20190101/9736249182736
+                                            td  2019-01-01
+                                            td Username
+                                            td 
+                                                label(class='status canceledSts') Canceled
+                                            td 
+                                                form(action='mngtrans/view.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='viewBtn' type='submit') View
+                                                form(action='mngtrans/update.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='editBtn' type='submit') Edit
+                                                form(action='mngtrans/delete.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='deleteBtn' type='submit') Delete
+                                        tr
+                                            td  INV/20190101/9736249182736
+                                            td  2019-01-01
+                                            td Username
+                                            td 
+                                                label(class='status rejectedSts') Rejected
+                                            td 
+                                                form(action='mngtrans/view.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='viewBtn' type='submit') View
+                                                form(action='mngtrans/update.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='editBtn' type='submit') Edit
+                                                form(action='mngtrans/delete.jsp' method='POST')
+                                                    input(type="hidden" name="TransId" value="1") 
+                                                    button(class='deleteBtn' type='submit') Delete
+                                        tr
+                                            td(colspan= 5 align= 'center') There is no data
+                    else
+                        |<%@ include file="_footerol.jsp"%>
+    script(src='assets/javascript/index.js')

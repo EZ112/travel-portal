@@ -1,0 +1,29 @@
+doctype
+html(lang='en')
+    head
+        include _head.pug
+        link(rel='stylesheet', href='assets/css/signin.css')
+    body
+        include _general.pug
+        .container
+            - for(let i = 0; i < 4; i++)
+                .section
+                    if i == 0
+                        .heading-1 Sign in to our application
+                    else if i == 1
+                        form(action='controller/doSignin.jsp' method="POST")
+                            for k in signInForm
+                                .formItem
+                                    if k[0] == 'in'
+                                        +input(k[1], k[2], k[3], k[4], k[5])
+                                    else if k[0]== 'inCheckBox'
+                                        label
+                                            +inputNoLabel(k[1], k[2], k[3], k[4])
+                                            | Remember Me
+                                    else
+                                        +inputNoLabel(k[1], k[2], k[3], k[4])   
+                    else if i == 2
+                        | Don't have an account yet? 
+                        a(href='signup.jsp') Sign up now.
+                    else
+                        |<%@ include file="_footer.jsp"%>

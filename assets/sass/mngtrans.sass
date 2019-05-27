@@ -1,0 +1,162 @@
+@import _color.sass
+@import _general.sass
+
+.container
+    background: url(../img/bg.jpg) no-repeat;
+    background-size: cover;
+    display: grid;
+    grid-template-rows: 5vh 35vh 55vh 5vh;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+
+    .section
+        @include fluid-type(font-size, 320px, 1366px, 10px, 16px)
+
+        &:nth-child(1)
+            color: white;
+            display: grid;
+            font-family: 'Segoe UI Light';
+            grid-template-columns: auto auto;
+
+            .menu 
+                left: 15%;
+                position: relative;
+                
+                a
+                    margin: 0 0 0 2%;
+            
+            .user 
+                right: 22%;
+                position: relative;
+                text-align: right;
+            span
+                display: inline-block;
+                position: relative;
+                .ddlUser
+                    text-align: left;
+                    position: absolute;
+                    padding: 5px 10px;
+                    min-width: 5vw;
+                    border-radius: 5px;
+                    color: $gray;
+                    background-color: white;
+                    box-shadow: 0px 0px 30px -5px $lightGray;
+                    opacity: 0;
+                    transition: all 300ms;
+                    z-index: 1;
+                    a
+                        display: block;
+                &:hover .ddlUser                        
+                    opacity: 1;
+
+        &:nth-child(2)
+            color: white;
+            position: relative;
+            left: 10%;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            font-family: 'Segoe UI Light';
+            justify-content: center;
+
+            .tagline
+                padding: 0 20px;
+                background-color: $gray;
+
+            div
+                margin: 5px 0;
+
+
+        &:nth-child(3)
+            color: $gray;
+
+            .translist
+                background-color: white;
+                height: 95%;
+                width: 80%;
+                margin: auto;
+                box-shadow: 0px 0px 30px -5px $lightGray;
+                display: grid;
+                justify-content: center;
+                align-content: center;
+                grid-template-columns: 90%;
+                grid-template-rows: 80% 10%;
+
+                table, th, td
+                    border-collapse: collapse;
+                    border: 1px solid $lightGray;
+                    border-right: 0px;
+                    border-left: 0px;
+                    
+                table
+                    thead
+                        text-align: left;
+                        th
+                            border-bottom: 1px solid $gray;
+                    th, td
+                        padding: 1% 0;
+                        &:last-child
+                            width: 25%;
+                    tbody
+                        tr
+                            &:hover
+                                background-color: $lightGray;
+                    
+                    .status
+                        font-size: 14px;
+                        font-weight: bold;
+                        text-align: center;
+                        width: 80%;
+                        padding: 2% 0;
+                        border-radius: 5px;
+
+                    .approvedSts
+                        color: white;
+                        background-color: $green;
+                    .pendingSts
+                        color: $black;
+                        background-color: $yellow;
+                    .canceledSts, .rejectedSts
+                        color: white;
+                        background-color: $red;
+
+                    form
+                        display: inline;
+                        button
+                            font-size: 15px;
+                            border-style: none;
+                            color: white;
+                            width: 30%;
+                            padding: 3% 0;
+                            border-radius: 5px;
+                    
+                    .viewBtn
+                        background-color: $green;
+                    .editBtn
+                        background-color: $blue;
+                    .deleteBtn
+                        background-color: $red;
+
+        &:nth-child(4)
+                color: $gray;
+                display: flex;
+                justify-content: center;
+
+.container::before
+    content: '';
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50vh;
+    z-index: -1;
+
+.container:after
+    content: '';
+    background-color: $gray;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0.3;

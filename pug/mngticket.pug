@@ -1,0 +1,61 @@
+doctype
+html(lang='en')
+    head
+        include _head.pug
+        link(rel='stylesheet', href='assets/css/mngticket.css')
+    body
+        |<% String heading = "Tickets ";%>
+        |<% String tagline = "Ticket list";%>
+        include _general.pug
+        .container
+            - for(let i = 0; i < 4; i++)
+                .section
+                    if i == 0
+                        |<%@ include file="_menuadmin.jsp"%>
+                    else if i == 1
+                          |<%@ include file="_header.jsp"%>
+                    else if i == 2
+                           .ticketlist
+                                table
+                                    thead
+                                        tr
+                                            th(colspan=4)
+                                            th(colspan=2) Price
+                                            th(colspan=2)
+                                        tr
+                                            th  Airline
+                                            th  From
+                                            th  To
+                                            th  Departure Date
+                                            th  Economy
+                                            th  Business
+                                            th  Seat
+                                            th  Action
+                                    tbody
+                                        tr
+                                            td  Garuda Indonesia
+                                            td  Pontianak
+                                            td  Jakarta
+                                            td  2019-01-20
+                                            td  
+                                                b Rp. 
+                                                |   980000
+                                            td  
+                                                b Rp. 
+                                                |   1200000
+                                            td  35
+                                            td
+                                                form(action='mngticket/update.jsp' method='POST')
+                                                    input(type="hidden" name="TicketId" value="1") 
+                                                    button(class='editBtn' type='submit') Edit
+                                                form(action='mngticket/delete.jsp' method='POST')
+                                                    input(type="hidden" name="TicketId" value="1") 
+                                                    button(class='deleteBtn' type='submit') Delete
+                                        tr
+                                            td(colspan=8 align='center') There is no data
+                                div                                            
+                                    a(href="mngticket/insert.jsp")
+                                        | Insert Ticket
+                    else
+                        |<%@ include file="_footerol.jsp"%>
+    script(src='assets/javascript/index.js')

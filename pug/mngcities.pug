@@ -1,0 +1,43 @@
+doctype
+html(lang='en')
+    head
+        include _head.pug
+        link(rel='stylesheet', href='assets/css/mngcities.css')
+    body
+        |<% String heading = "Cities ";%>
+        |<% String tagline = "Available city list";%>
+        include _general.pug
+        .container
+            - for(let i = 0; i < 4; i++)
+                .section
+                    if i == 0
+                        |<%@ include file="_menuadmin.jsp"%>
+                    else if i == 1
+                          |<%@ include file="_header.jsp"%>
+                    else if i == 2
+                           .citieslist
+                                table
+                                    thead
+                                        tr
+                                            th  City
+                                            th  Country
+                                            th  Action
+                                    tbody
+                                        tr
+                                            td  Jakarta
+                                            td  Indonesia
+                                            td 
+                                                form(action='mngcities/update.jsp' method='POST')
+                                                    input(type="hidden" name="CitiesId" value="1") 
+                                                    button(class='editBtn' type='submit') Edit
+                                                form(action='mngcities/delete.jsp' method='POST')
+                                                    input(type="hidden" name="CitiesId" value="1") 
+                                                    button(class='deleteBtn' type='submit') Delete
+                                        tr
+                                            td(colspan=3 align='center') There is no data
+                                div                                            
+                                    a(href="mngcities/insert.jsp")
+                                        | Insert Cities
+                    else
+                        |<%@ include file="_footerol.jsp"%>
+    script(src='assets/javascript/index.js')

@@ -1,0 +1,27 @@
+doctype
+html(lang='en')
+    head
+        include _head.pug
+        link(rel="stylesheet", href="assets/css/signup.css")
+    body
+        include _general.pug
+        .container
+            - for(let i = 0; i < 4; i++)
+                .section
+                    if i == 0
+                        .heading-1 Sign up to our application
+                    else if i == 1
+                        form(action="controller/doSignup.jsp" method="POST")
+                            for k in signUpForm
+                                .formItem
+                                    if k[0] == 'in'
+                                        +input(k[1], k[2], k[3], k[4], [5])
+                                    else if k[0]== 'inGender'
+                                        +inputRadio(k[1], k[2], k[3], k[4])
+                                    else
+                                        +inputNoLabel(k[1], k[2], k[3], k[4])   
+                    else if i == 2
+                        | Already have an account yet? 
+                        a(href="signin.jsp") Sign in now.
+                    else
+                        |<%@ include file="_footer.jsp"%>

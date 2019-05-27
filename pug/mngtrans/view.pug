@@ -1,0 +1,45 @@
+doctype
+html(lang='en')
+    head
+        include ../_head.pug
+        link(rel='stylesheet', href='../assets/css/viewtrans.css')
+    body
+        |<% String heading = "Transaction Details";%>
+        |<% String tagline = "Detail of selected transaction";%>
+        include ../_general.pug
+        .container
+            - for(let i = 0; i < 4; i++)
+                .section
+                    if i == 0
+                        |<%@ include file="../_menuadmin.jsp"%>
+                    else if i == 1
+                          |<%@ include file="../_header.jsp"%>
+                    else if i == 2
+                           .translist
+                                div
+                                    label(class='invoice') INV/20190101/9736249182736
+                                    label(class='status pendingSts') Pending
+                                table
+                                    thead
+                                        tr
+                                            th  Person Title
+                                            th  Person Name
+                                            th  Person Nasionality
+                                    tbody
+                                        tr
+                                            td  Mr
+                                            td  Steven Martin
+                                            td Indonesia
+                                        tr
+                                            td  Mrs
+                                            td  Angela Irena Ardianti
+                                            td Indonesia
+                                        tr
+                                            td(colspan= 5 align= 'center') There is no data
+                                form(class='formNav' action="action/doFormNav.jsp" method="POST")
+                                    button(name='approveBtn' type='submit' value="Approve") Approve
+                                    button(name='rejectBtn' type='submit' value="Reject") Reject
+                                    button(name='backBtn' type='submit' value="mngtrans.jsp") Back
+                    else
+                        |<%@ include file="../_footerol.jsp"%>
+    script(src='assets/javascript/index.js')

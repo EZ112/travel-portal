@@ -1,0 +1,87 @@
+//fluid typography
+@function strip-unit($number) 
+  @if type-of($number) == "number" and not unitless($number)
+    @return $number / ($number * 0 + 1);
+
+  @return $number;
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) 
+  @each $property in $properties 
+    #{$property}: $min-value;
+
+  @media (min-width: $min-vw) 
+    @each $property in $properties 
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+
+  @media (min-width: $max-vw) 
+    @each $property in $properties 
+      #{$property}: $max-value;
+    
+body 
+    margin: 0;
+    font-family: 'Segoe UI';
+
+a
+    text-decoration: none;
+    color: inherit;
+    
+    &:hover
+        text-decoration: underline;
+
+.heading-1
+    @include fluid-type(font-size, 320px, 1366px, 18px, 40px)
+
+.heading-2
+    @include fluid-type(font-size, 320px, 1366px, 14px, 25px)
+
+label
+    display: block;
+    margin: 0 0 1% 0;
+
+input, select
+    border-radius: 5px;
+    font-family: 'Segoe UI';
+    background-color: $lightGray;
+    border-style: none;
+    @include fluid-type(font-size, 320px, 1366px, 10px, 16px)
+
+input[type='submit'], button
+    font-family: 'Segoe UI Light';
+    background-color: $gray;
+    color: white;
+    cursor: pointer;
+
+button
+    border-radius: 5px;
+    border-style: none;
+
+.invoice
+    color: white;
+    background-color: $blue;
+
+.approvedSts
+    color: white;
+    background-color: $green;
+.pendingSts
+    color: $black;
+    background-color: $yellow;
+.canceledSts, .rejectedSts
+    color: white;
+    background-color: $red;
+
+@keyframes slideInFromTop
+    0%
+        transform: translateY(-30%);
+        opacity: 0;
+    100%
+        transform: translateY(0)
+        opacity: 1;
+
+@keyframes shake
+  0%
+    transform: translateX(-15px);
+  30%
+    transform: translateX(15px);
+  60%
+    transform: translateX(-15px);
+  

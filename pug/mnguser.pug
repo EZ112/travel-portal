@@ -1,0 +1,47 @@
+doctype
+html(lang='en')
+    head
+        include _head.pug
+        link(rel='stylesheet', href='assets/css/mnguser.css')
+    body
+        |<% String heading = "Users ";%>
+        |<% String tagline = "Active user list";%>
+        include _general.pug
+        .container
+            - for(let i = 0; i < 4; i++)
+                .section
+                    if i == 0
+                        |<%@ include file="_menuadmin.jsp"%>
+                    else if i == 1
+                          |<%@ include file="_header.jsp"%>
+                    else if i == 2
+                           .userlist
+                                table
+                                    thead
+                                        tr
+                                            th  Name
+                                            th  Email
+                                            th  Password
+                                            th  Gender
+                                            th  Action
+                                    tbody
+                                        tr
+                                            td  Username
+                                            td  user@gmail.com
+                                            td ******
+                                            td Female
+                                            td 
+                                                form(action='mnguser/update.jsp' method='POST')
+                                                    input(type="hidden" name="UserId" value="1") 
+                                                    button(class='editBtn' type='submit') Edit
+                                                form(action='mnguser/delete.jsp' method='POST')
+                                                    input(type="hidden" name="UserId" value="1") 
+                                                    button(class='deleteBtn' type='submit') Delete
+                                        tr
+                                            td(colspan= 5 align= 'center') There is no data
+                                div                                            
+                                    a(href="mnguser/insert.jsp")
+                                        | Insert User
+                    else
+                        |<%@ include file="_footerol.jsp"%>
+    script(src='assets/javascript/index.js')

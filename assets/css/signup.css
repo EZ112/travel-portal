@@ -1,0 +1,302 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI';
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.heading-1 {
+  font-size: 18px;
+}
+
+@media (min-width: 320px) {
+  .heading-1 {
+    font-size: calc(18px + 22 * (100vw - 320px) / 1046);
+  }
+}
+
+@media (min-width: 1366px) {
+  .heading-1 {
+    font-size: 40px;
+  }
+}
+
+.heading-2 {
+  font-size: 14px;
+}
+
+@media (min-width: 320px) {
+  .heading-2 {
+    font-size: calc(14px + 11 * (100vw - 320px) / 1046);
+  }
+}
+
+@media (min-width: 1366px) {
+  .heading-2 {
+    font-size: 25px;
+  }
+}
+
+label {
+  display: block;
+  margin: 0 0 1% 0;
+}
+
+input, select {
+  border-radius: 5px;
+  font-family: 'Segoe UI';
+  background-color: #eeeeee;
+  border-style: none;
+  font-size: 10px;
+}
+
+@media (min-width: 320px) {
+  input, select {
+    font-size: calc(10px + 6 * (100vw - 320px) / 1046);
+  }
+}
+
+@media (min-width: 1366px) {
+  input, select {
+    font-size: 16px;
+  }
+}
+
+input[type='submit'], button {
+  font-family: 'Segoe UI Light';
+  background-color: #5C5D65;
+  color: white;
+  cursor: pointer;
+}
+
+button {
+  border-radius: 5px;
+  border-style: none;
+}
+
+.invoice {
+  color: white;
+  background-color: #0babfe;
+}
+
+.approvedSts {
+  color: white;
+  background-color: #4bceaf;
+}
+
+.pendingSts {
+  color: #222222;
+  background-color: #ffad1e;
+}
+
+.canceledSts, .rejectedSts {
+  color: white;
+  background-color: #f1637e;
+}
+
+@-webkit-keyframes slideInFromTop {
+  0% {
+    -webkit-transform: translateY(-30%);
+            transform: translateY(-30%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    -webkit-transform: translateY(-30%);
+            transform: translateY(-30%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateX(-15px);
+            transform: translateX(-15px);
+  }
+  30% {
+    -webkit-transform: translateX(15px);
+            transform: translateX(15px);
+  }
+  60% {
+    -webkit-transform: translateX(-15px);
+            transform: translateX(-15px);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: translateX(-15px);
+            transform: translateX(-15px);
+  }
+  30% {
+    -webkit-transform: translateX(15px);
+            transform: translateX(15px);
+  }
+  60% {
+    -webkit-transform: translateX(-15px);
+            transform: translateX(-15px);
+  }
+}
+
+.container {
+  background: url(../img/bg.jpg) no-repeat;
+  background-size: cover;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 30vh 60vh 5vh 5vh;
+      grid-template-rows: 30vh 60vh 5vh 5vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.container .section {
+  font-size: 10px;
+}
+
+@media (min-width: 320px) {
+  .container .section {
+    font-size: calc(10px + 6 * (100vw - 320px) / 1046);
+  }
+}
+
+@media (min-width: 1366px) {
+  .container .section {
+    font-size: 16px;
+  }
+}
+
+.container .section:nth-child(1) {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: 'Segoe UI Light';
+}
+
+.container .section:nth-child(2) {
+  color: #5C5D65;
+}
+
+.container .section:nth-child(2) form {
+  background-color: white;
+  height: 95%;
+  width: 25%;
+  margin: auto;
+  -webkit-box-shadow: 0px 0px 30px -5px #eeeeee;
+          box-shadow: 0px 0px 30px -5px #eeeeee;
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+  -ms-grid-rows: 15% 15% 15% 15% 12% 10%;
+      grid-template-rows: 15% 15% 15% 15% 12% 10%;
+  -ms-grid-columns: 85%;
+      grid-template-columns: 85%;
+}
+
+.container .section:nth-child(2) form input:not([type='radio']) {
+  height: 45%;
+}
+
+.container .section:nth-child(2) form input[type='text'], .container .section:nth-child(2) form input[type='email'], .container .section:nth-child(2) form input[type='password'] {
+  width: 90%;
+  padding: 0 5%;
+}
+
+.container .section:nth-child(2) form .gender {
+  display: inline;
+}
+
+.container .section:nth-child(2) form input[type='submit'] {
+  height: 80%;
+  width: 100%;
+}
+
+.container .section:nth-child(2) form .errMsg {
+  color: #f1637e;
+}
+
+.container .section:nth-child(2) form .stsMsg {
+  color: #4bceaf;
+}
+
+.container .section:nth-child(2) form .errMsg, .container .section:nth-child(2) form .stsMsg {
+  -webkit-animation: shake 0.5s;
+          animation: shake 0.5s;
+}
+
+.container .section:nth-child(3) {
+  color: #5C5D65;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .section:nth-child(3) a {
+  position: relative;
+  left: 5px;
+}
+
+.container .section:nth-child(4) {
+  color: #5C5D65;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container::before {
+  content: '';
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 40vh;
+  z-index: -1;
+}
+
+.container:after {
+  content: '';
+  background-color: #5C5D65;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: 0.3;
+}
+/*# sourceMappingURL=signup.css.map */
