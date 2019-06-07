@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="assets/css/index.css">
   </head>
   <body>
+      <%
+          String role = (String)session.getAttribute("role");
+          String menu = "";
+          if(role!=null)
+            menu = role.equals("Admin")?"_menuadmin.jsp":"_menutag.jsp";
+          else
+            menu = "_menutag.jsp"; 
+    %>
     <% String heading = "Where are you going ?";%>
     <% String tagline = "Ticket anywhre only at TravelProtal";%>
     <% String tagline2 = "Booking is faster, easier and cheaper";%>
     <div class="container">
       <div class="section">
-          <%
-                String role = (String)session.getAttribute("role");
-                String menu = "";
-                if(role!=null)
-                  menu = role.equals("Admin")?"_menuadmin.jsp":"_menutag.jsp";
-                else
-                  menu = "_menutag.jsp"; 
-          %>
           <jsp:include page='<%= menu%>' flush='true' />
       </div>
       <div class="section"><%@ include file="_homeheader.jsp"%>

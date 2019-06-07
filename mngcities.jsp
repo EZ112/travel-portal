@@ -1,3 +1,4 @@
+<%@ page import="java.util.Vector" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,10 +10,19 @@
     <link rel="stylesheet" href="assets/css/mngcities.css">
   </head>
   <body>
+    <%@ include file = "./model/City.jsp"%>
+    <%@ include file = "./controller/connect.jsp"%>
     <%
           String role = (String)session.getAttribute("role");
           if(role == null || !role.equals("Admin"))
             response.sendRedirect("index.jsp");
+
+          Vector<City> cities = new Vector<City>();
+          String query = "SELECT * FROM cities_tbl";
+          ResultSet rs = st.executeQuery(query);
+          
+          while(rs.next())
+            cities.add(new City(rs.getInt(1), rs.getString(2), rs.getString(3)));
     %>
     <% String heading = "Cities ";%>
     <% String tagline = "Available city list";%>
@@ -32,26 +42,39 @@
               </tr>
             </thead>
             <tbody>
+              <%
+                      for(int i=0; i < cities.size(); i++){
+              %>
               <tr>
-                <td> Jakarta</td>
-                <td> Indonesia</td>
+                <td><%= cities.get(i).getCity() %></td>
+                <td><%= cities.get(i).getCountry() %></td>
                 <td> 
-                  <form action="mngcities/update.jsp" method="POST">
-                    <input type="hidden" name="CitiesId" value="1">
+                  <form action="mngcities/modify.jsp" method="POST">
+                    <input type="hidden" name="cityId" value='<%= cities.get(i).getCityId() %>'>
                     <button class="editBtn" type="submit">Edit</button>
                   </form>
-                  <form action="mngcities/delete.jsp" method="POST">
-                    <input type="hidden" name="CitiesId" value="1">
+                  <form action="controller/modifyCity.jsp" method="POST">
+                    <input type="hidden" name="modifyType" value="Delete">
+                    <input type="hidden" name="cityId" value='<%= cities.get(i).getCityId()%>'>
                     <button class="deleteBtn" type="submit">Delete</button>
                   </form>
                 </td>
               </tr>
+              <%    
+                    }
+              %>
+              <%
+                    if(cities.size() < 1){
+              %>
               <tr>
                 <td colspan="3" align="center">There is no data</td>
               </tr>
+              <%
+                  }
+              %>
             </tbody>
           </table>
-          <div>                                           <a href="mngcities/insert.jsp">Insert Cities</a></div>
+          <div>                                           <a href="mngcities/modify.jsp">Insert Cities</a></div>
         </div>
       </div>
       <div class="section"><%@ include file="_footerol.jsp"%>

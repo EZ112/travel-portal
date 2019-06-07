@@ -5,7 +5,7 @@
     background: url(../img/bg.jpg) no-repeat;
     background-size: cover;
     display: grid;
-    grid-template-rows: 3vh auto 5vh;
+    grid-template-rows: 5vh 35vh 30vh 25vh 5vh;
     position: relative;
     overflow: hidden;
     z-index: 0;
@@ -19,10 +19,6 @@
             font-family: 'Segoe UI Light';
             grid-template-columns: auto auto;
 
-            .tagline 
-                left: 17%;
-                position: relative;
-            
             .menu 
                 left: 15%;
                 position: relative;
@@ -31,12 +27,10 @@
                     margin: 0 0 0 2%;
             
             .user 
-                right: 20%;
+                right: 22%;
                 position: relative;
                 text-align: right;
-
-                a
-                    margin: 0 2% 0 0;
+            
                 span
                     display: inline-block;
                     position: relative;
@@ -58,61 +52,60 @@
                         opacity: 1;
 
         &:nth-child(2)
+            color: white;
+            position: relative;
+            left: 10%;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            font-family: 'Segoe UI Light';
+            justify-content: center;
+
+            .tagline
+                padding: 0 20px;
+                background-color: $gray;
+
+            div
+                margin: 5px 0;
+
+
+        &:nth-child(3)
             color: $gray;
 
-            .ticketlist
+            form
                 background-color: white;
-                height: 14.5vh;
+                height: 95%;
                 width: 80%;
-                margin: 1.5% auto;
+                margin: auto;
                 box-shadow: 0px 0px 30px -5px $lightGray;
                 display: grid;
-                justify-content: center;
                 align-content: center;
-                border-radius: 5px;
-                grid-template-columns: 90%;
-                animation-name: slideInFromTop;
-                animation-timing-function: ease-in-out;
-                animation-duration: .3s;
-                animation-fill-mode: forwards;
-                opacity: 0;
-                @for $i from 1 through 5
-                    &:nth-child(#{$i})
-                        animation-delay: $i * .2s;
-                    
-                table
-                    tbody
-                        th
-                            text-align: left;
-                        form
-                            display: inline;
-                            button
-                                font-size: 25px;
-                                border-style: none;
-                                color: white;
-                                height: 100%;
-                                width: 80%;
-                                padding: 10% 10%;
-                                border-radius: 5%;
-                        div
-                            display: inline-block;
-                            padding: 1% 5%;
-                            font-weight: bold;
-                            border-radius: 5px;
+                justify-content: center;
+                grid-template-rows: 40% 20%;
+                grid-template-columns: 40% 40%;
+                grid-column-gap: 2%;
 
-                        .fromDest
-                            color: white;
-                            background-color: $blue;
-                        .toDest
-                            color: $black;
-                            background-color: $yellow;
-                    
-                    .editBtn
-                        background-color: $blue;
-                    .deleteBtn
-                        background-color: $red;
-                
-        &:nth-child(3)
+                .formItem
+                    &:last-child
+                        grid-area: 2 / 2 / auto / auto;
+                        display: flex;
+                        justify-content: flex-end;
+
+                input
+                    &:not([type='radio'])
+                        height: 45%;
+
+                input[type='text'], input[type='email'], input[type='password']
+                    width: 96%;
+                    padding: 0 2%;
+            
+                input[type='submit']
+                    height: 100%;
+                    padding: 0 4%;
+             
+
+        &:nth-child(4)
+                grid-area: 5 / 1 / auto / auto;
                 color: $gray;
                 display: flex;
                 justify-content: center;
@@ -123,7 +116,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 3vh;
+    top: 50vh;
     z-index: -1;
 
 .container:after

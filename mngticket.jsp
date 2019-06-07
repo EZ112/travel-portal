@@ -1,3 +1,4 @@
+<%@ page import="java.util.Vector" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,10 +10,18 @@
     <link rel="stylesheet" href="assets/css/mngticket.css">
   </head>
   <body>
+    <%@ include file = "./model/Ticket.jsp"%>
+    <%@ include file = "./controller/connect.jsp"%>
     <%
           String role = (String)session.getAttribute("role");
           if(role == null || !role.equals("Admin"))
             response.sendRedirect("index.jsp");
+          Vector<Ticket> tickets = new Vector<Ticket>();
+          String query = "SELECT a.TicketId, b.Airline, c.Destination, d.Destination, a.PriceEconomy, a.PriceBusiness, a.DepartureDate, a.AvailSeat FROM tickets_tbl a JOIN airline_tbl b ON a.AirlineId = b.AirlineId JOIN dest_tbl c ON a.FromDestId = c.DestId JOIN dest_tbl d ON a.ToDestId = d.DestId";
+          ResultSet rs = st.executeQuery(query);
+
+          while(rs.next())
+            tickets.add(new Ticket(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getDate(7), rs.getInt(8)));
     %>
     <% String heading = "Tickets ";%>
     <% String tagline = "Ticket list";%>
@@ -42,31 +51,44 @@
               </tr>
             </thead>
             <tbody>
+              <%
+                    for(int i = 0; i < tickets.size(); i++){
+              %>
               <tr>
-                <td> Garuda Indonesia</td>
-                <td> Pontianak</td>
-                <td> Jakarta</td>
-                <td> 2019-01-20</td>
-                <td> <b>Rp. </b>  980000</td>
-                <td> <b>Rp. </b>  1200000</td>
-                <td> 35</td>
+                <td><%= tickets.get(i).getAirline() %></td>
+                <td><%= tickets.get(i).getFromDest() %></td>
+                <td><%= tickets.get(i).getToDest() %></td>
+                <td><%= tickets.get(i).getDepartureDate() %></td>
+                <td> <b>Rp. </b>  <%= tickets.get(i).getPriceEconomy() %></td>
+                <td> <b>Rp. </b>  <%= tickets.get(i).getPriceBusiness() %></td>
+                <td> <%= tickets.get(i).getAvailSeat() %></td>
                 <td>
-                  <form action="mngticket/update.jsp" method="POST">
-                    <input type="hidden" name="TicketId" value="1">
+                  <form action="mngticket/modify.jsp" method="POST">
+                    <input type="hidden" name="ticketId" value='<%= tickets.get(i).getTicketId() %>'>
                     <button class="editBtn" type="submit">Edit</button>
                   </form>
-                  <form action="mngticket/delete.jsp" method="POST">
-                    <input type="hidden" name="TicketId" value="1">
+                  <form action="controller/modifyTicket.jsp" method="POST">
+                    <input type="hidden" name="modifyType" value="Delete">
+                    <input type="hidden" name="ticketId" value='<%= tickets.get(i).getTicketId() %>'>
                     <button class="deleteBtn" type="submit">Delete</button>
                   </form>
                 </td>
               </tr>
+              <%
+                    }
+              %>
+              <%
+                    if(tickets.size() < 1){
+              %>
               <tr>
                 <td colspan="8" align="center">There is no data</td>
               </tr>
+              <%
+                  }
+              %>
             </tbody>
           </table>
-          <div>                                           <a href="mngticket/insert.jsp">Insert Ticket</a></div>
+          <div>                                           <a href="mngticket/modify.jsp">Insert Ticket</a></div>
         </div>
       </div>
       <div class="section"><%@ include file="_footerol.jsp"%>

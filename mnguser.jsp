@@ -50,7 +50,7 @@
               <tr>
                 <td><%= users.get(i).getFullname() %></td>
                 <td><%= users.get(i).getEmail() %></td>
-                <td><%= users.get(i).getPass() %></td>
+                <td>*****</td>
                 <td><%= users.get(i).getGender() %></td>
                 <td> 
                   <form action="mnguser/modify.jsp" method="POST">

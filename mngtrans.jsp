@@ -1,3 +1,4 @@
+<%@ page import="java.util.Vector" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,10 +10,19 @@
     <link rel="stylesheet" href="assets/css/mngtrans.css">
   </head>
   <body>
+    <%@ include file = "./model/Trans.jsp"%>
+    <%@ include file = "./controller/connect.jsp"%>
     <%
           String role = (String)session.getAttribute("role");
           if(role == null || !role.equals("Admin"))
             response.sendRedirect("index.jsp");
+
+          Vector<Trans> transactions = new Vector<Trans>();
+          String query = "SELECT * FROM transactions_tbl";
+          ResultSet rs = st.executeQuery(query);
+
+          while(rs.next())
+            transactions.add(new Trans(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5)));
     %>
     <% String heading = "Transaction ";%>
     <% String tagline = "On progress transaction";%>
@@ -34,12 +44,22 @@
               </tr>
             </thead>
             <tbody>
+              <%
+                    for(int i = 0; i < transactions.size(); i++){
+              %>
               <tr>
-                <td> INV/20190101/9736249182736</td>
-                <td> 2019-01-01</td>
-                <td>Username</td>
-                <td> 
-                  <label class="status approvedSts">Approved</label>
+                <td><%= transactions.get(i).getInvoiceNum() %></td>
+                <td><%= transactions.get(i).getPurchaseDate() %></td>
+                <td><%= transactions.get(i).getBuyer() %></td>
+                <td>
+                  <% if(transactions.get(i).getStatus().equals("Approved")) 
+                            out.println("<label class='status approvedSts'>");
+                        else if(transactions.get(i).getStatus().equals("Pending")) 
+                          out.println("<label class='status pendingSts'>");
+                        else 
+                          out.println("<label class='status rejectedSts'>");
+                  %>
+                  <%= transactions.get(i).getStatus() %></label> 
                 </td>
                 <td>
                   <form action="mngtrans/view.jsp" method="POST">
@@ -56,75 +76,18 @@
                   </form>
                 </td>
               </tr>
-              <tr>
-                <td> INV/20190101/9736249182736</td>
-                <td> 2019-01-01</td>
-                <td>Username</td>
-                <td> 
-                  <label class="status pendingSts">Pending</label>
-                </td>
-                <td> 
-                  <form action="mngtrans/view.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
-                    <button class="viewBtn" type="submit">View</button>
-                  </form>
-                  <form action="mngtrans/update.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
-                    <button class="editBtn" type="submit">Edit</button>
-                  </form>
-                  <form action="mngtrans/delete.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
-                    <button class="deleteBtn" type="submit">Delete</button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td> INV/20190101/9736249182736</td>
-                <td> 2019-01-01</td>
-                <td>Username</td>
-                <td> 
-                  <label class="status canceledSts">Canceled</label>
-                </td>
-                <td> 
-                  <form action="mngtrans/view.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
-                    <button class="viewBtn" type="submit">View</button>
-                  </form>
-                  <form action="mngtrans/update.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
-                    <button class="editBtn" type="submit">Edit</button>
-                  </form>
-                  <form action="mngtrans/delete.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
-                    <button class="deleteBtn" type="submit">Delete</button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td> INV/20190101/9736249182736</td>
-                <td> 2019-01-01</td>
-                <td>Username</td>
-                <td> 
-                  <label class="status rejectedSts">Rejected</label>
-                </td>
-                <td> 
-                  <form action="mngtrans/view.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
-                    <button class="viewBtn" type="submit">View</button>
-                  </form>
-                  <form action="mngtrans/update.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
-                    <button class="editBtn" type="submit">Edit</button>
-                  </form>
-                  <form action="mngtrans/delete.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
-                    <button class="deleteBtn" type="submit">Delete</button>
-                  </form>
-                </td>
-              </tr>
+              <%
+                    }
+              %>
+              <%
+                    if(transactions.size() < 1){
+              %>
               <tr>
                 <td colspan="5" align="center">There is no data</td>
               </tr>
+              <%
+                  }
+              %>
             </tbody>
           </table>
         </div>

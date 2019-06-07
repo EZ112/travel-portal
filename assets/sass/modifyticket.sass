@@ -31,6 +31,26 @@
                 position: relative;
                 text-align: right;
 
+                span
+                    display: inline-block;
+                    position: relative;
+                    .ddlUser
+                        text-align: left;
+                        position: absolute;
+                        padding: 5px 10px;
+                        min-width: 5vw;
+                        border-radius: 5px;
+                        color: $gray;
+                        background-color: white;
+                        box-shadow: 0px 0px 30px -5px $lightGray;
+                        opacity: 0;
+                        transition: all 300ms;
+                        z-index: 1;
+                        a
+                            display: block;
+                    &:hover .ddlUser                        
+                        opacity: 1;
+
         &:nth-child(2)
             color: white;
             position: relative;
@@ -61,35 +81,49 @@
                 display: grid;
                 align-content: center;
                 justify-content: center;
-                grid-template-rows: 20% 20% 15% 20% 10%;
-                grid-template-columns: 85%
+                grid-template-rows: 20% 20% 20% 10%;
+                grid-template-columns: 20% 20% 20% 20%; 
+                grid-gap: 0 2%;
 
                 .formItem
-                    .errMsg
-                        display: flex;
-                        align-items: center;
-                        color: $red;
-                        margin: 0 2% 0 0;
-                        animation: shake 0.5s;
-                        
-                    &:last-child
+                    &:nth-child(3)
+                        grid-area: 1 / 1 / auto / span 4;
+                    &:nth-child(4)
+                        grid-area: 2 / 1 / auto / span 2;
+                    &:nth-child(5)
+                        grid-area: 2 / 3 / auto / span 2;
+                    &:nth-child(6)
+                        grid-area: 3 / 1 / auto / auto;
+                    &:nth-child(7)
+                        grid-area: 3 / 2 / auto / auto;
+                    &:nth-child(8)
+                        grid-area: 3 / 3 / auto / auto;
+                    &:nth-child(9)
+                        grid-area: 3 / 4 / auto / auto;
+                    &:nth-child(10)
+                        grid-area: 4 / 4 / auto / auto;
                         display: flex;
                         justify-content: flex-end;
+                    &:nth-child(3) select
+                        padding: 0 2%
+                    &:nth-child(n+4) select
+                        padding: 0 5%;
 
                 input
                     &:not([type='radio'])
                         height: 45%;
+                
+                select
+                    width: 100%;
+                    height: 45%;
 
-                input[type='text'], input[type='email'], input[type='password']
-                    width: 96%;
-                    padding: 0 2%;
-
-                .gender
-                    display: inline;
+                input[type='text'], input[type='date']
+                    width: 88%;
+                    padding: 0 6%;
             
                 input[type='submit']
                     height: 100%;
-                    padding: 0 2%;
+                    padding: 0 10%;
              
 
         &:nth-child(4)
