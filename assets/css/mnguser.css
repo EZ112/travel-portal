@@ -81,6 +81,10 @@ button {
   border-style: none;
 }
 
+button:disabled {
+  opacity: .5;
+}
+
 .invoice {
   color: white;
   background-color: #0babfe;
@@ -159,7 +163,7 @@ button {
 
 .container {
   background: url(../img/bg.jpg) no-repeat;
-  background-size: cover;
+  background-size: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 5vh 35vh 55vh 5vh;
@@ -297,10 +301,15 @@ button {
   border: 1px solid #eeeeee;
   border-right: 0px;
   border-left: 0px;
+  border-bottom: 0px;
 }
 
 .container .section:nth-child(3) .userlist table thead {
   text-align: left;
+}
+
+.container .section:nth-child(3) .userlist table thead tr {
+  display: block;
 }
 
 .container .section:nth-child(3) .userlist table thead th {
@@ -308,7 +317,15 @@ button {
 }
 
 .container .section:nth-child(3) .userlist table th, .container .section:nth-child(3) .userlist table td {
+  width: 20vw;
   padding: 1% 0;
+}
+
+.container .section:nth-child(3) .userlist table tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: 30vh;
 }
 
 .container .section:nth-child(3) .userlist table tbody tr:hover {

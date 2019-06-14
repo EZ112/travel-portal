@@ -7,9 +7,9 @@
         String country = request.getParameter("inCountry");
 
         if(city.equals(""))
-            response.sendRedirect("../mngcities/modify.jsp?err=1");   
-        else if(city.equals(""))
-            response.sendRedirect("../mngcities/modify.jsp?err=2");   
+            response.sendRedirect("../mngcity/modify.jsp?err=1");   
+        else if(country.equals(""))
+            response.sendRedirect("../mngcity/modify.jsp?err=2");   
         
         else{
                 try{
@@ -21,31 +21,37 @@
 
                     stmt.executeUpdate();
 
-                    response.sendRedirect("../mngcities.jsp");
+                    response.sendRedirect("../mngcity.jsp");
                 }catch(Exception e){
                     out.println(e);
                 }
         }
         
     }
-    else if(modifyType.equals("Update")){
-        try{
+    else if(modifyType.equals("Update")){        
             String cityId = request.getParameter("cityId");
             String city = request.getParameter("inCity");
             String country = request.getParameter("inCountry");
 
-            String query = "UPDATE cities_tbl SET City = ?, Country = ? WHERE CityId = ?";
-            PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setString(1, city);
-            stmt.setString(2, country);
-            stmt.setString(3, cityId);
+            if(city.equals(""))
+                response.sendRedirect("../mngcity/modify.jsp?err=1&cityId="+cityId);   
+            else if(country.equals(""))
+                response.sendRedirect("../mngcity/modify.jsp?err=2&cityId="+cityId);
+            else{
+                try{
+                    String query = "UPDATE cities_tbl SET City = ?, Country = ? WHERE CityId = ?";
+                    PreparedStatement stmt = con.prepareStatement(query);
+                    stmt.setString(1, city);
+                    stmt.setString(2, country);
+                    stmt.setString(3, cityId);
 
-            stmt.executeUpdate();
+                    stmt.executeUpdate();
 
-            response.sendRedirect("../mngcities.jsp");
-        }catch(Exception e){
-            System.out.println(e);
-        }
+                    response.sendRedirect("../mngcity.jsp");
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+            }
     }
     else if(modifyType.equals("Delete")){
         int cityId = Integer.parseInt(request.getParameter("cityId"));
@@ -55,7 +61,7 @@
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, cityId);
             stmt.executeUpdate();
-            response.sendRedirect("../mngcities.jsp");
+            response.sendRedirect("../mngcity.jsp");
         }catch(Exception e){
             System.out.println(e);
         }

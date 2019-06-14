@@ -17,7 +17,7 @@
           if(role == null || !role.equals("Admin"))
             response.sendRedirect("index.jsp");
           Vector<Ticket> tickets = new Vector<Ticket>();
-          String query = "SELECT a.TicketId, b.Airline, c.Destination, d.Destination, a.PriceEconomy, a.PriceBusiness, a.DepartureDate, a.AvailSeat FROM tickets_tbl a JOIN airline_tbl b ON a.AirlineId = b.AirlineId JOIN dest_tbl c ON a.FromDestId = c.DestId JOIN dest_tbl d ON a.ToDestId = d.DestId";
+          String query = "SELECT a.TicketId, a.Airline, b.City, c.City, a.PriceEconomy, a.PriceBusiness, a.DepartureDate, a.AvailSeat FROM tickets_tbl a JOIN cities_tbl b ON a.FromDestId = b.CityId JOIN cities_tbl c ON a.ToDestId = c.CityId";
           ResultSet rs = st.executeQuery(query);
 
           while(rs.next())
@@ -35,9 +35,9 @@
           <table>
             <thead>
               <tr>
-                <th colspan="4"></th>
-                <th colspan="2">Price</th>
-                <th colspan="2"></th>
+                <th></th>
+                <th>Price</th>
+                <th></th>
               </tr>
               <tr>
                 <th> Airline</th>

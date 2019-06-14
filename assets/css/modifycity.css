@@ -81,6 +81,10 @@ button {
   border-style: none;
 }
 
+button:disabled {
+  opacity: .5;
+}
+
 .invoice {
   color: white;
   background-color: #0babfe;
@@ -159,7 +163,7 @@ button {
 
 .container {
   background: url(../img/bg.jpg) no-repeat;
-  background-size: cover;
+  background-size: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 5vh 35vh 30vh 25vh 5vh;
@@ -292,8 +296,23 @@ button {
   grid-column-gap: 2%;
 }
 
+.container .section:nth-child(3) form .formItem .errMsg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #f1637e;
+  margin: 0 2% 0 0;
+  -webkit-animation: shake 0.5s;
+          animation: shake 0.5s;
+}
+
 .container .section:nth-child(3) form .formItem:last-child {
-  grid-area: 2 / 2 / auto / auto;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: 2 / 1 / auto / span 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -346,4 +365,4 @@ button {
   z-index: -2;
   opacity: 0.3;
 }
-/*# sourceMappingURL=modifycities.css.map */
+/*# sourceMappingURL=modifycity.css.map */

@@ -59,10 +59,8 @@
 
         &:nth-child(2)
             color: $gray;
-
-            .ticketlist
+            .passagerList
                 background-color: white;
-                height: 14.5vh;
                 width: 80%;
                 margin: 1.5% auto;
                 box-shadow: 0px 0px 30px -5px $lightGray;
@@ -71,59 +69,43 @@
                 align-content: center;
                 border-radius: 5px;
                 grid-template-columns: 90%;
-                animation-name: slideInFromTop;
-                animation-timing-function: ease-in-out;
-                animation-duration: .3s;
-                animation-fill-mode: forwards;
-                opacity: 0;
-                @for $i from 1 through 5
-                    &:nth-child(#{$i})
-                        animation-delay: $i * .2s;
-                    
+
+                .headList
+                    display: flex;
+                    flex-direction: row;
+                    margin: 2% 0;
+                    .no 
+                        display: flex;
+                        justify-content: center;
+                        height: 25px;
+                        width: 25px;
+                        background-color: $gray;
+                        color: white;
+                        border-radius: 100%;    
+                    .listlabel
+                        margin-left: 1%;                    
+
                 table
-                    tbody
-                        th
-                            text-align: left;
-                        td
-                            &:nth-child(1)
-                                width: 30%;
+                    margin-bottom: 2%;
+                    text-align: left;
+                    td, th 
+                        width: 20%;
+                    input, select
+                        padding: 2% 5%;
+                    input
+                        width: 80%;
+                    select 
+                        width: 90%;
 
-                        form
-                            display: inline;
-                            button
-                                font-size: 25px;
-                                border-style: none;
-                                color: white;
-                                height: 100%;
-                                width: 80%;
-                                padding: 10% 10%;
-                                border-radius: 5%;
-                        div
-                            display: inline-block;
-                            padding: 1% 5%;
-                            font-weight: bold;
-                            border-radius: 5px;
-
-                        .fromDest
-                            color: white;
-                            background-color: $blue;
-                        .toDest
-                            color: $black;
-                            background-color: $yellow;
-                    
-                    .editBtn
-                        background-color: $blue;
-                    .deleteBtn
-                        background-color: $red;
-            div
-                display: flex;
-                justify-content: center;
-                .pages
-                    margin: .2%;
-                    padding: .2% .5%;
-                    background-color: white;
-                    box-shadow: 0px 0px 30px -5px $lightGray;
-                    border: 1px solid $lightGray;
+                div:last-child
+                    display: flex;
+                    justify-content: flex-end;
+                    input[type='submit']
+                        width: 18%;
+                        padding: 1% 0;
+                        margin-right: 3.5%;
+                        margin-bottom: 2%;
+            
                 
         &:nth-child(3)
                 color: $gray;

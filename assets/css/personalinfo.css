@@ -81,6 +81,10 @@ button {
   border-style: none;
 }
 
+button:disabled {
+  opacity: .5;
+}
+
 .invoice {
   color: white;
   background-color: #0babfe;
@@ -159,11 +163,11 @@ button {
 
 .container {
   background: url(../img/bg.jpg) no-repeat;
-  background-size: cover;
+  background-size: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 5vh 35vh 55vh 5vh;
-      grid-template-rows: 5vh 35vh 55vh 5vh;
+  -ms-grid-rows: 3vh auto 5vh;
+      grid-template-rows: 3vh auto 5vh;
   position: relative;
   overflow: hidden;
   z-index: 0;
@@ -194,6 +198,11 @@ button {
       grid-template-columns: auto auto;
 }
 
+.container .section:nth-child(1) .tagline {
+  left: 17%;
+  position: relative;
+}
+
 .container .section:nth-child(1) .menu {
   left: 15%;
   position: relative;
@@ -204,17 +213,21 @@ button {
 }
 
 .container .section:nth-child(1) .user {
-  right: 22%;
+  right: 20%;
   position: relative;
   text-align: right;
 }
 
-.container .section:nth-child(1) span {
+.container .section:nth-child(1) .user a {
+  margin: 0 2% 0 0;
+}
+
+.container .section:nth-child(1) .user span {
   display: inline-block;
   position: relative;
 }
 
-.container .section:nth-child(1) span .ddlUser {
+.container .section:nth-child(1) .user span .ddlUser {
   text-align: left;
   position: absolute;
   padding: 5px 10px;
@@ -230,52 +243,22 @@ button {
   z-index: 1;
 }
 
-.container .section:nth-child(1) span .ddlUser a {
+.container .section:nth-child(1) .user span .ddlUser a {
   display: block;
 }
 
-.container .section:nth-child(1) span:hover .ddlUser {
+.container .section:nth-child(1) .user span:hover .ddlUser {
   opacity: 1;
 }
 
 .container .section:nth-child(2) {
-  color: white;
-  position: relative;
-  left: 10%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  font-family: 'Segoe UI Light';
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.container .section:nth-child(2) .tagline {
-  padding: 0 20px;
-  background-color: #5C5D65;
-}
-
-.container .section:nth-child(2) div {
-  margin: 5px 0;
-}
-
-.container .section:nth-child(3) {
   color: #5C5D65;
 }
 
-.container .section:nth-child(3) .citieslist {
+.container .section:nth-child(2) .passagerList {
   background-color: white;
-  height: 95%;
   width: 80%;
-  margin: auto;
+  margin: 1.5% auto;
   -webkit-box-shadow: 0px 0px 30px -5px #eeeeee;
           box-shadow: 0px 0px 30px -5px #eeeeee;
   display: -ms-grid;
@@ -288,53 +271,59 @@ button {
   border-radius: 5px;
   -ms-grid-columns: 90%;
       grid-template-columns: 90%;
-  -ms-grid-rows: 80% 10%;
-      grid-template-rows: 80% 10%;
 }
 
-.container .section:nth-child(3) .citieslist table, .container .section:nth-child(3) .citieslist th, .container .section:nth-child(3) .citieslist td {
-  border-collapse: collapse;
-  border: 1px solid #eeeeee;
-  border-right: 0px;
-  border-left: 0px;
+.container .section:nth-child(2) .passagerList .headList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 2% 0;
 }
 
-.container .section:nth-child(3) .citieslist table thead {
+.container .section:nth-child(2) .passagerList .headList .no {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 25px;
+  width: 25px;
+  background-color: #5C5D65;
+  color: white;
+  border-radius: 100%;
+}
+
+.container .section:nth-child(2) .passagerList .headList .listlabel {
+  margin-left: 1%;
+}
+
+.container .section:nth-child(2) .passagerList table {
+  margin-bottom: 2%;
   text-align: left;
 }
 
-.container .section:nth-child(3) .citieslist table thead th {
-  border-bottom: 1px solid #5C5D65;
+.container .section:nth-child(2) .passagerList table td, .container .section:nth-child(2) .passagerList table th {
+  width: 20%;
 }
 
-.container .section:nth-child(3) .citieslist table th, .container .section:nth-child(3) .citieslist table td {
-  padding: 1% 0;
-}
-
-.container .section:nth-child(3) .citieslist table tbody tr:hover {
-  background-color: #eeeeee;
-}
-
-.container .section:nth-child(3) .citieslist table tbody form {
-  display: inline;
-}
-
-.container .section:nth-child(3) .citieslist table tbody form button {
-  border-style: none;
-  color: white;
+.container .section:nth-child(2) .passagerList table input, .container .section:nth-child(2) .passagerList table select {
   padding: 2% 5%;
-  border-radius: 5%;
 }
 
-.container .section:nth-child(3) .citieslist table .editBtn {
-  background-color: #0babfe;
+.container .section:nth-child(2) .passagerList table input {
+  width: 80%;
 }
 
-.container .section:nth-child(3) .citieslist table .deleteBtn {
-  background-color: #f1637e;
+.container .section:nth-child(2) .passagerList table select {
+  width: 90%;
 }
 
-.container .section:nth-child(3) .citieslist div {
+.container .section:nth-child(2) .passagerList div:last-child {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -343,29 +332,14 @@ button {
           justify-content: flex-end;
 }
 
-.container .section:nth-child(3) .citieslist div a {
-  height: 100%;
-  width: 15%;
-  border-radius: 5%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: #5C5D65;
-  color: white;
-  font-family: "Segoe UI Light";
+.container .section:nth-child(2) .passagerList div:last-child input[type='submit'] {
+  width: 18%;
+  padding: 1% 0;
+  margin-right: 3.5%;
+  margin-bottom: 2%;
 }
 
-.container .section:nth-child(3) .citieslist div a:hover {
-  text-decoration: none;
-}
-
-.container .section:nth-child(4) {
+.container .section:nth-child(3) {
   color: #5C5D65;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -381,7 +355,7 @@ button {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 50vh;
+  top: 3vh;
   z-index: -1;
 }
 
@@ -394,4 +368,4 @@ button {
   z-index: -2;
   opacity: 0.3;
 }
-/*# sourceMappingURL=mngcities.css.map */
+/*# sourceMappingURL=personalinfo.css.map */

@@ -81,6 +81,10 @@ button {
   border-style: none;
 }
 
+button:disabled {
+  opacity: .5;
+}
+
 .invoice {
   color: white;
   background-color: #0babfe;

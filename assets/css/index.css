@@ -81,6 +81,10 @@ button {
   border-style: none;
 }
 
+button:disabled {
+  opacity: .5;
+}
+
 .invoice {
   color: white;
   background-color: #0babfe;
@@ -159,7 +163,7 @@ button {
 
 .container {
   background: url(../img/bg.jpg) no-repeat;
-  background-size: cover;
+  background-size: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 5vh 35vh 55vh 5vh;

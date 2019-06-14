@@ -6,7 +6,7 @@
     <title>Travel Protal</title>
     <link rel="icon" href="assets/img/travelico.png" attr>
     <base href="http://localhost:8082/travel-portal/">
-    <link rel="stylesheet" href="../assets/css/modifycities.css">
+    <link rel="stylesheet" href="../assets/css/modifycity.css">
   </head>
   <body>
     <%@ include file = "../controller/connect.jsp"%>

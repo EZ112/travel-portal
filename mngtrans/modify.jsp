@@ -7,7 +7,7 @@
     <title>Travel Protal</title>
     <link rel="icon" href="assets/img/travelico.png" attr>
     <base href="http://localhost:8082/travel-portal/">
-    <link rel="stylesheet" href="../assets/css/viewtrans.css">
+    <link rel="stylesheet" href="../assets/css/modifytrans.css">
   </head>
   <body>
     <%@ include file = "../model/TransDetail.jsp"%>
@@ -28,8 +28,8 @@
           while(rs.next())
             transDetails.add(new TransDetail(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
     %>
-    <% String heading = "Transaction Details";%>
-    <% String tagline = "Detail of selected transaction";%>
+    <% String heading = "Update Transaction";%>
+    <% String tagline = "Update selected transaction";%>
     <div class="container">
       <div class="section"><%@ include file="../_menuadmin.jsp"%>
       </div>
@@ -40,13 +40,13 @@
           <div>
             <label class="invoice"><%= invoiceNum%></label>
             <% if(status.equals("Approved")) 
-                    out.println("<label class='status approvedSts'>");
-                else if(status.equals("Pending")) 
-                  out.println("<label class='status pendingSts'>");
-                else 
-                  out.println("<label class='status rejectedSts'>");
-          %>
-          <%= status %></label> 
+                      out.println("<label class='status approvedSts'>");
+                  else if(status.equals("Pending")) 
+                    out.println("<label class='status pendingSts'>");
+                  else 
+                    out.println("<label class='status rejectedSts'>");
+            %>
+            <%= status %></label>
           </div>
           <table>
             <thead>
@@ -54,6 +54,7 @@
                 <th> Person Title</th>
                 <th> Person Name</th>
                 <th> Person Nasionality</th>
+                <th> Action</th>
               </tr>
             </thead>
             <tbody>
@@ -64,22 +65,20 @@
                 <td><%= transDetails.get(i).getTitle() %></td>
                 <td><%= transDetails.get(i).getName() %></td>
                 <td><%= transDetails.get(i).getNationality() %></td>
+                <td>
+                  <form action="./controller/modifyTransDetail.jsp" method="POST"> 
+                    <input type="hidden" name="modifyType" value="Delete">
+                    <input type="hidden" name="transDetailId" value='<%= transDetails.get(i).getTransDetailId()%>'>
+                    <button class="deleteBtn" type="submit">Delete</button>
+                  </form>
+                </td>
               </tr>
               <%
                     }
               %>
             </tbody>
           </table>
-          <form class="formNav" action="./controller/transApproval.jsp" method="POST">
-            <%
-                  if(status.equals("Pending")){
-            %>
-            <input type="hidden" name="transId" value='<%= transId %>'>
-            <button name="approval" type="submit" value="Approved">Approve</button>
-            <button name="approval" type="submit" value="Rejected">Reject</button>
-            <%
-                  }
-            %>
+          <form class="formNav" action="./controller/modifyTrans.jsp" method="POST">
             <button type="submit" value="mngtrans.jsp">Back</button>
           </form>
         </div>

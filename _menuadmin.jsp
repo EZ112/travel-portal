@@ -1,19 +1,12 @@
-<%!
-        String homeLink = "index.jsp";
-        String userLink = "mnguser.jsp";
-        String citiesLink = "mngcities.jsp";
-        String ticketLink = "mngticket.jsp";
-        String transLink = "mngtrans.jsp";
-%>
 <%
         String name = (String)session.getAttribute("name");
 %>
 <div class="menu"> 
-    <a href=<%= homeLink%>>Home</a>
-    <a href=<%= userLink%>>Users</a>
-    <a href=<%= citiesLink%>>Cities</a>
-    <a href=<%= ticketLink%>>Ticket</a>
-    <a href=<%= transLink%>>Transaction</a>
+    <a href='index.jsp'>Home</a>
+    <a href='mnguser.jsp'>Users</a>
+    <a href='mngcity.jsp'>Cities</a>
+    <a href='mngticket.jsp'>Ticket</a>
+    <a href='mngtrans.jsp'>Transaction</a>
 </div>
 <div class='user'>
     <span>

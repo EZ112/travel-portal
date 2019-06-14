@@ -18,7 +18,7 @@
             response.sendRedirect("index.jsp");
 
           Vector<Trans> transactions = new Vector<Trans>();
-          String query = "SELECT * FROM transactions_tbl";
+          String query = "SELECT a.TransId, a.InvoiceNum, a.PurchaseDate, b.Fullname, a.Status FROM transactions_tbl a JOIN users_tbl b ON a.BuyerId = b.UserId";
           ResultSet rs = st.executeQuery(query);
 
           while(rs.next())
@@ -63,16 +63,21 @@
                 </td>
                 <td>
                   <form action="mngtrans/view.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
+                    <input type="hidden" name="transId" value='<%= transactions.get(i).getTransId() %>'>
+                    <input type="hidden" name="invoiceNum" value='<%= transactions.get(i).getInvoiceNum() %>'>
+                    <input type="hidden" name="status" value='<%= transactions.get(i).getStatus() %>'>
                     <button class="viewBtn" type="submit">View</button>
                   </form>
-                  <form action="mngtrans/update.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
-                    <button class="editBtn" type="submit">Edit</button>
+                  <form action="mngtrans/modify.jsp" method="POST">
+                    <input type="hidden" name="transId" value='<%= transactions.get(i).getTransId() %>'>
+                    <input type="hidden" name="invoiceNum" value='<%= transactions.get(i).getInvoiceNum() %>'>
+                    <input type="hidden" name="status" value='<%= transactions.get(i).getStatus() %>'>
+                    <button class="editBtn" type="submit" <% if(!transactions.get(i).getStatus().equals("Pending")) out.print("disabled"); %>>Edit</button>
                   </form>
-                  <form action="mngtrans/delete.jsp" method="POST">
-                    <input type="hidden" name="TransId" value="1">
-                    <button class="deleteBtn" type="submit">Delete</button>
+                  <form action="controller/modifyTrans.jsp" method="POST">
+                    <input type="hidden" name="modifyType" value="Delete">
+                    <input type="hidden" name="transId" value='<%= transactions.get(i).getTransId() %>'>
+                    <button class="deleteBtn" type="submit" <% if(!transactions.get(i).getStatus().equals("Pending")) out.print("disabled"); %>>Delete</button>
                   </form>
                 </td>
               </tr>

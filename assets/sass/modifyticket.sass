@@ -3,7 +3,7 @@
 
 .container
     background: url(../img/bg.jpg) no-repeat;
-    background-size: cover;
+    background-size: 100%;
     display: grid;
     grid-template-rows: 5vh 35vh 55vh 5vh;
     position: relative;
@@ -101,13 +101,20 @@
                     &:nth-child(9)
                         grid-area: 3 / 4 / auto / auto;
                     &:nth-child(10)
-                        grid-area: 4 / 4 / auto / auto;
+                        grid-area: 4 / 3 / auto / span 2;
                         display: flex;
                         justify-content: flex-end;
-                    &:nth-child(3) select
+                    &:nth-child(3) input
+                        width: 96%;
                         padding: 0 2%
                     &:nth-child(n+4) select
                         padding: 0 5%;
+                    .errMsg
+                        display: flex;
+                        align-items: center;
+                        color: $red;
+                        margin: 0 2% 0 0;
+                        animation: shake 0.5s;
 
                 input
                     &:not([type='radio'])

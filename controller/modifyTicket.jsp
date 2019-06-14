@@ -4,7 +4,7 @@
     String modifyType = request.getParameter("modifyType");
 
     if(modifyType.equals("Insert")){
-        int airlineId = Integer.parseInt(request.getParameter("ddlAirline"));
+        String airline = request.getParameter("inAirline");
         int fromDestId = Integer.parseInt(request.getParameter("ddlFrom"));
         int toDestId = Integer.parseInt(request.getParameter("ddlTo"));
         int priceEco = Integer.parseInt(request.getParameter("inPriceEco"));
@@ -12,19 +12,26 @@
         String deptDate = request.getParameter("inDate");
         int availSeat = Integer.parseInt(request.getParameter("inSeat"));
 
-        if(airlineId == 0)
+        if(airline.equals(""))
             response.sendRedirect("../mngticket/modify.jsp?err=1");   
         else if(fromDestId == 0)
             response.sendRedirect("../mngticket/modify.jsp?err=2");   
         else if(toDestId == 0)
-            response.sendRedirect("../mngticket/modify.jsp?err=3");   
-
+            response.sendRedirect("../mngticket/modify.jsp?err=3");
+        else if(priceEco == 0)
+            response.sendRedirect("../mngticket/modify.jsp?err=4");
+        else if(priceBus == 0)
+            response.sendRedirect("../mngticket/modify.jsp?err=5");
+        else if(deptDate.equals(""))
+            response.sendRedirect("../mngticket/modify.jsp?err=6");
+        else if(availSeat == 0)
+            response.sendRedirect("../mngticket/modify.jsp?err=7");
         else{
                 try{
-                    String query = "INSERT INTO tickets_tbl(AirlineId, FromDestId, ToDestId, PriceEconomy, PriceBusiness, DepartureDate, AvailSeat) VALUES (?,?,?,?,?,?,?)";
+                    String query = "INSERT INTO tickets_tbl(Airline, FromDestId, ToDestId, PriceEconomy, PriceBusiness, DepartureDate, AvailSeat) VALUES (?,?,?,?,?,?,?)";
 
                     PreparedStatement stmt = con.prepareStatement(query);
-                    stmt.setInt(1, airlineId);
+                    stmt.setString(1, airline);
                     stmt.setInt(2, fromDestId);
                     stmt.setInt(3, toDestId);
                     stmt.setInt(4, priceEco);
@@ -44,7 +51,7 @@
     else if(modifyType.equals("Update")){
         try{
             int ticketId = Integer.parseInt(request.getParameter("ticketId"));
-            int airlineId = Integer.parseInt(request.getParameter("ddlAirline"));
+            String airline = request.getParameter("inAirline");
             int fromDestId = Integer.parseInt(request.getParameter("ddlFrom"));
             int toDestId = Integer.parseInt(request.getParameter("ddlTo"));
             int priceEco = Integer.parseInt(request.getParameter("inPriceEco"));
@@ -54,9 +61,9 @@
             
             
 
-            String query = "UPDATE tickets_tbl SET AirlineId = ?, FromDestId = ?, ToDestId = ?, PriceEconomy = ?, PriceBusiness = ?, DepartureDate = ?, AvailSeat = ? WHERE TicketId = ?";
+            String query = "UPDATE tickets_tbl SET Airline = ?, FromDestId = ?, ToDestId = ?, PriceEconomy = ?, PriceBusiness = ?, DepartureDate = ?, AvailSeat = ? WHERE TicketId = ?";
             PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setInt(1, airlineId);
+            stmt.setString(1, airline);
             stmt.setInt(2, fromDestId);
             stmt.setInt(3, toDestId);
             stmt.setInt(4, priceEco);

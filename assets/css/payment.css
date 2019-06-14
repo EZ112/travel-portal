@@ -81,6 +81,10 @@ button {
   border-style: none;
 }
 
+button:disabled {
+  opacity: .5;
+}
+
 .invoice {
   color: white;
   background-color: #0babfe;
@@ -159,11 +163,11 @@ button {
 
 .container {
   background: url(../img/bg.jpg) no-repeat;
-  background-size: cover;
+  background-size: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 5vh 35vh 55vh 5vh;
-      grid-template-rows: 5vh 35vh 55vh 5vh;
+  -ms-grid-rows: 5vh 30vh auto 5vh;
+      grid-template-rows: 5vh 30vh auto 5vh;
   position: relative;
   overflow: hidden;
   z-index: 0;
@@ -209,6 +213,35 @@ button {
   text-align: right;
 }
 
+.container .section:nth-child(1) .user span {
+  display: inline-block;
+  position: relative;
+}
+
+.container .section:nth-child(1) .user span .ddlUser {
+  text-align: left;
+  position: absolute;
+  padding: 5px 10px;
+  min-width: 5vw;
+  border-radius: 5px;
+  color: #5C5D65;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 30px -5px #eeeeee;
+          box-shadow: 0px 0px 30px -5px #eeeeee;
+  opacity: 0;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  z-index: 1;
+}
+
+.container .section:nth-child(1) .user span .ddlUser a {
+  display: block;
+}
+
+.container .section:nth-child(1) .user span:hover .ddlUser {
+  opacity: 1;
+}
+
 .container .section:nth-child(2) {
   color: white;
   position: relative;
@@ -240,60 +273,89 @@ button {
 
 .container .section:nth-child(3) {
   color: #5C5D65;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 65% 25%;
+      grid-template-columns: 65% 25%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 5%;
 }
 
-.container .section:nth-child(3) .userlist {
+.container .section:nth-child(3) .passangerDetail .passagerList {
   background-color: white;
-  height: 95%;
-  width: 80%;
-  margin: auto;
+  width: 90%;
+  margin: 1.5% auto;
   -webkit-box-shadow: 0px 0px 30px -5px #eeeeee;
           box-shadow: 0px 0px 30px -5px #eeeeee;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  border-radius: 5px;
+  -ms-grid-columns: 90%;
+      grid-template-columns: 90%;
+}
+
+.container .section:nth-child(3) .passangerDetail .passagerList .headList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 2% 0;
+}
+
+.container .section:nth-child(3) .passangerDetail .passagerList .headList .no {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: 25px;
+  width: 25px;
+  background-color: #5C5D65;
+  color: white;
+  border-radius: 100%;
 }
 
-.container .section:nth-child(3) .userlist table, .container .section:nth-child(3) .userlist th, .container .section:nth-child(3) .userlist td {
-  border-collapse: collapse;
-  border: 1px solid #eeeeee;
-  border-right: 0px;
-  border-left: 0px;
+.container .section:nth-child(3) .passangerDetail .passagerList .headList .listlabel {
+  margin-left: 1%;
 }
 
-.container .section:nth-child(3) .userlist table {
-  position: relative;
-  top: 10%;
-  width: 90%;
-}
-
-.container .section:nth-child(3) .userlist table thead {
+.container .section:nth-child(3) .passangerDetail .passagerList table {
+  margin-bottom: 2%;
   text-align: left;
 }
 
-.container .section:nth-child(3) .userlist table thead th {
-  border-bottom: 1px solid #5C5D65;
+.container .section:nth-child(3) .passangerDetail .passagerList table td, .container .section:nth-child(3) .passangerDetail .passagerList table th {
+  width: 20%;
 }
 
-.container .section:nth-child(3) .userlist table th, .container .section:nth-child(3) .userlist table td {
-  padding: 1% 0;
+.container .section:nth-child(3) .buyerInformation #buyerLabel {
+  font-weight: bold;
 }
 
-.container .section:nth-child(3) .userlist table button {
-  border-style: none;
-  color: white;
-  padding: 5% 10%;
-  border-radius: 5%;
+.container .section:nth-child(3) .buyerInformation #priceLabel {
+  font-weight: bold;
+  margin-top: 10%;
+  font-weight: 20px;
 }
 
-.container .section:nth-child(3) .userlist table .editBtn {
-  background-color: #0babfe;
+.container .section:nth-child(3) .buyerInformation form input[type='submit'] {
+  margin: 1% 0;
+  padding: 2% 0;
+  width: 80%;
 }
 
-.container .section:nth-child(3) .userlist table .deleteBtn {
+.container .section:nth-child(3) .buyerInformation form:last-child input[type='submit'] {
   background-color: #f1637e;
 }
 
@@ -313,7 +375,7 @@ button {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 50vh;
+  top: 35vh;
   z-index: -1;
 }
 
@@ -326,4 +388,4 @@ button {
   z-index: -2;
   opacity: 0.3;
 }
-/*# sourceMappingURL=updateuser.css.map */
+/*# sourceMappingURL=payment.css.map */

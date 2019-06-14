@@ -7,7 +7,7 @@
     <title>Travel Protal</title>
     <link rel="icon" href="assets/img/travelico.png" attr>
     <base href="http://localhost:8082/travel-portal/">
-    <link rel="stylesheet" href="assets/css/mngcities.css">
+    <link rel="stylesheet" href="assets/css/mngcity.css">
   </head>
   <body>
     <%@ include file = "./model/City.jsp"%>
@@ -49,7 +49,7 @@
                 <td><%= cities.get(i).getCity() %></td>
                 <td><%= cities.get(i).getCountry() %></td>
                 <td> 
-                  <form action="mngcities/modify.jsp" method="POST">
+                  <form action="mngcity/modify.jsp" method="POST">
                     <input type="hidden" name="cityId" value='<%= cities.get(i).getCityId() %>'>
                     <button class="editBtn" type="submit">Edit</button>
                   </form>
@@ -74,7 +74,7 @@
               %>
             </tbody>
           </table>
-          <div>                                           <a href="mngcities/modify.jsp">Insert Cities</a></div>
+          <div>                                           <a href="mngcity/modify.jsp">Insert Cities</a></div>
         </div>
       </div>
       <div class="section"><%@ include file="_footerol.jsp"%>

@@ -18,6 +18,7 @@
             String query = "SELECT * FROM users_tbl WHERE Email = '"+email+"'AND Password = '"+pass+"'";
             ResultSet rs = st.executeQuery(query);
             if(rs.next()){
+                String loggedId = rs.getString(1);
                 String loggedName = rs.getString(2);
                 String loggedRole = rs.getString(6);
                 
@@ -28,6 +29,7 @@
 
                 online++;
                 application.setAttribute("online",online);
+                session.setAttribute("id", loggedId);
                 session.setAttribute("name", loggedName);
                 session.setAttribute("role", loggedRole);
 

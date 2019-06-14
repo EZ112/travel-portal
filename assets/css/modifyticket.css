@@ -81,6 +81,10 @@ button {
   border-style: none;
 }
 
+button:disabled {
+  opacity: .5;
+}
+
 .invoice {
   color: white;
   background-color: #0babfe;
@@ -159,7 +163,7 @@ button {
 
 .container {
   background: url(../img/bg.jpg) no-repeat;
-  background-size: cover;
+  background-size: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 5vh 35vh 55vh 5vh;
@@ -327,7 +331,9 @@ button {
 }
 
 .container .section:nth-child(3) form .formItem:nth-child(10) {
-  grid-area: 4 / 4 / auto / auto;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 2;
+  grid-area: 4 / 3 / auto / span 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -336,12 +342,26 @@ button {
           justify-content: flex-end;
 }
 
-.container .section:nth-child(3) form .formItem:nth-child(3) select {
+.container .section:nth-child(3) form .formItem:nth-child(3) input {
+  width: 96%;
   padding: 0 2%;
 }
 
 .container .section:nth-child(3) form .formItem:nth-child(n+4) select {
   padding: 0 5%;
+}
+
+.container .section:nth-child(3) form .formItem .errMsg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #f1637e;
+  margin: 0 2% 0 0;
+  -webkit-animation: shake 0.5s;
+          animation: shake 0.5s;
 }
 
 .container .section:nth-child(3) form input:not([type='radio']) {
